@@ -19,7 +19,8 @@ class BooksController extends Controller
     
     
     public function index() {
-        $books = Books::orderBy('created_at', 'asc')->get();
+        $books = Books::orderBy('created_at', 'asc')->paginate(3);
+        
         return view('books', [
             'books' => $books
         ]);
